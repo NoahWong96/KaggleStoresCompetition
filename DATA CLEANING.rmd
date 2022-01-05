@@ -1,0 +1,26 @@
+---
+title: "Data Cleaning.rmd"
+output: pdf_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+
+```
+
+```{r}
+library(tidyverse)
+```
+
+```{r}
+train <- read.csv("../../../Data/train.csv")
+test <- read.csv("../../../Data/test.csv")
+oil <- read.csv("../../../Data/oil.csv", stringsAsFactors = FALSE)
+holidays <- read.csv("../../../Data/holidays_events.csv", stringsAsFactors = FALSE)
+stores <- read.csv("../../../Data/stores.csv", stringsAsFactors = FALSE)
+```
+
+
+```{r}
+train <- merge(train, oil, all.x = TRUE, by = "date")
+```
